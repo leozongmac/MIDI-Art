@@ -1,4 +1,6 @@
 # AKAI MPK mini 星空粒子钢琴可视化
+<img width="1920" height="954" alt="Snipaste_2026-05-30_23-34-59" src="https://github.com/user-attachments/assets/4d3fe759-130e-4003-ab8a-f50ff80cfd48" />
+<img width="1920" height="954" alt="Snipaste_2026-05-30_23-34-38" src="https://github.com/user-attachments/assets/54184077-91c7-4ffb-b022-4a7ab2d6e4d6" />
 
 一个浏览器端的 Web MIDI + Web Audio + Canvas 交互程序：
 
