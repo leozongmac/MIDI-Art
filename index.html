@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MPK mini · 星空粒子钢琴可视化</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div class="hud">
+    <div class="left-column">
+      <div class="panel brand">
+        <div class="eyebrow">AKAI MPK mini / Web MIDI / Particle Art</div>
+        <h1>梵高星空 · 粒子涟漪钢琴</h1>
+        <p>
+          连接 MIDI 键盘后，按下按键即可触发钢琴采样，并让《星空》粒子画产生涟漪、旋涡和流动。
+        </p>
+        <div class="actions action-row">
+          <button id="startBtn">启动音频与 MIDI</button>
+          <label class="top-upload-btn" for="imageUpload">上传图片</label>
+          <button id="cameraBtn" class="secondary-btn" type="button">启动摄像头</button>
+          <button id="fullscreenBtn" class="secondary-btn" type="button">全屏模式</button>
+        </div>
+        <div class="credit-badge">Vibe coding 作者：AI造物主</div>
+        <div class="tips">
+          <span>浏览器建议：Chrome / Edge</span>
+          <span>无 MIDI 时可用电脑键盘：A W S E D F T G Y H U J K</span>
+          <span>电脑键盘延音测试：按住 Space</span>
+        </div>
+      </div>
+
+      <div class="panel controls">
+        <div class="controls-title">视觉效果调节</div>
+
+        <div id="uploadPanel" class="upload-panel">
+          <div class="upload-head">
+            <span>粒子画图片</span>
+            <strong id="imageStatus">当前：默认星空</strong>
+          </div>
+          <div class="upload-drop-hint">点击按钮上传，或直接把图片拖拽到这里</div>
+          <input id="imageUpload" class="visually-hidden" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" />
+          <div class="upload-actions-row">
+            <label class="upload-btn" for="imageUpload">上传用户图片</label>
+            <button id="resetImageBtn" class="secondary-btn" type="button">恢复默认</button>
+          </div>
+        </div>
+
+        <label class="slider-group" for="imageThreshold">
+          <div class="slider-head">
+            <span>图片阈值</span>
+            <strong id="imageThresholdValue">42</strong>
+          </div>
+          <input id="imageThreshold" type="range" min="0" max="220" step="1" value="42" />
+        </label>
+
+        <label class="slider-group" for="particleDensity">
+          <div class="slider-head">
+            <span>粒子数量</span>
+            <strong id="particleDensityValue">1.00x</strong>
+          </div>
+          <input id="particleDensity" type="range" min="0.45" max="2.40" step="0.01" value="1.00" />
+        </label>
+
+        <label class="slider-group" for="particleLifetime">
+          <div class="slider-head">
+            <span>粒子寿命</span>
+            <strong id="particleLifetimeValue">1.00x</strong>
+          </div>
+          <input id="particleLifetime" type="range" min="0.45" max="2.40" step="0.01" value="1.00" />
+        </label>
+
+        <label class="slider-group" for="gravityStrength">
+          <div class="slider-head">
+            <span>引力效果</span>
+            <strong id="gravityStrengthValue">0.65x</strong>
+          </div>
+          <input id="gravityStrength" type="range" min="0.00" max="1.80" step="0.01" value="0.65" />
+        </label>
+
+        <label class="slider-group" for="ejectionStrength">
+          <div class="slider-head">
+            <span>弹射效果</span>
+            <strong id="ejectionStrengthValue">1.00x</strong>
+          </div>
+          <input id="ejectionStrength" type="range" min="0.20" max="2.20" step="0.01" value="1.00" />
+        </label>
+      </div>
+    </div>
+
+    <div class="panel stats">
+      <div class="stat"><span>音频</span><strong id="audioStatus">未启动</strong></div>
+      <div class="stat"><span>MIDI</span><strong id="midiStatus">未连接</strong></div>
+      <div class="stat"><span>最近音符</span><strong id="noteStatus">—</strong></div>
+      <div class="stat"><span>粒子数量</span><strong id="particleStatus">0</strong></div>
+      <div class="stat"><span>动态</span><strong id="expressionStatus">Turbulence 35%</strong></div>
+      <div class="stat"><span>延音</span><strong id="sustainStatus">关闭</strong></div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <span>Pitch Bend：轻微弯音 + 画面偏转</span>
+    <span>Mod Wheel / CC1：增强粒子扰动与旋涡</span>
+    <span>CC64 Sustain：MIDI 延音踏板支持</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
